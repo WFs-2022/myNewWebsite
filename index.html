@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WsF的小站</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="top">
+        <span id="title">
+            <p>WsF的小站</p>
+        </span>
+        <span id="link">
+            <a href="./index.html" class="links activePage">Home</a>
+            <a href="./blogs.html" class="links">Blogs</a>
+            <a href="./items.html" class="links">Items</a>
+            <a href="./about.html" class="links">About</a>
+        </span>
+    </div>
+    <div class="background"><span>W=s*F</span></div>
+    <div id="content">
+        <p>欢迎来到WsF的小站！</p>
+        <p>这是在2023/6/30重新写的主页~</p>
+        <p>依然会继续写下去（应该）</p>
+        <p>上面那个效果，横屏下才比较好看</p>
+        <p>可以从顶上看一看（下载）Items的World的说</p>
+    </div>
+    <script>
+        const background = document.querySelector(".background")
+        const mask = document.getElementById("mask")
+        document.addEventListener('scroll', () => {
+            const scrollY = window.scrollY
+            if (scrollY != 0) {
+                background.style.backgroundPosition = `calc(50% + ${scrollY}px) calc(50% + ${scrollY}px)`
+            }else{
+                background.style.backgroundPosition = ''
+            }
+            if(scrollY>400){
+                background.style.filter = `blur(${scrollY/100}px)`
+            }else{
+                background.style.filter = ''
+            }
+        })
+    </script>
+</body>
+</html>

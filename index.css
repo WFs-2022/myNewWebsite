@@ -1,0 +1,57 @@
+::-webkit-scrollbar{
+    width: 0;
+}
+.background{
+    position: absolute;
+    width: 100vw;
+    height: 200vh;
+    background-image: url("./pictures/wallpaper.png");
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    -webkit-background-clip: text;
+    background-clip: text;
+    font-size: 28vw;
+    font-weight: 1000;
+    text-align: center;
+    padding-top: 20vh;
+    -webkit-text-fill-color: transparent;
+
+}.background::before{
+    content: '';
+    background-size: cover;
+    background-image: inherit;
+    background-position: center;
+    position: absolute;
+    top: 0;     bottom: 0;
+    left: 0;    right: 0;
+    z-index: -1;
+}
+
+#content {
+    z-index: 90;
+    position: absolute;
+    left: 10vw;  top: 132vh;
+    height: 80vh;
+    width: 80vw;
+    background: #2228;
+    border-radius: 16px;
+    text-align: center;
+    line-height: 8vh;
+}#content p {
+    margin: 16px;
+    color: #DDD;
+    font-size: x-large;
+    font-weight: bold;
+}
+@media (max-device-width: 440px) {
+    #content {
+        left: 5vw;
+        width: 90vw;
+        line-height: 5vh;
+        top: 135vh;
+    }
+    #content p{
+        font-size: 5vw;
+    }
+}

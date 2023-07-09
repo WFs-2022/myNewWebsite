@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wfOS</title>
+    <link rel="stylesheet" href="wfOS.css">
+</head>
+<body>
+    <div id="desktop">
+        <div class="desktopApps" ondblclick="javascript:newWindow(1)">
+            <div class="desktopAppIcons">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <style>
+                    *{
+                        user-select: none;
+                        -moz-user-select: none;
+                        -webkit-user-select: none;
+                    }
+                    .w{
+                        font: normal 26px "Comic Sans MS";
+                        fill: #AAA;
+                    }.f{
+                        font: normal 26px "Comic Sans MS";
+                        fill: #AAA;
+                    }.s{
+                        font: normal 32px Helvetica;
+                        fill: #111;
+                    }
+                </style>
+                <circle cx="16" cy="16" r="12" stroke-width="2px" stroke="#111" fill="#F6F6F6" />
+                <text x="5.5" y="27.5" class="s">S</text>
+                <text x="6.5" y="25" class="w">w</text>
+                <text x="10" y="25" class="f">f</text>
+            </svg></div>
+            <p class="desktopAppNames">关于</p>
+        </div>
+        <div class="desktopApps" ondblclick="javascript:newWindow(2)">
+            <div class="desktopAppIcons"></div>
+            <p class="desktopAppNames">主站</p>
+        </div>
+        <div class="desktopApps" ondblclick="javascript:newWindow(3)">
+            <div class="desktopAppIcons">
+                <picture><img src="music-unlocker/favicon.ico" alt="icon"></picture>
+            </div>
+            <p class="desktopAppNames">音乐解锁</p>
+        </div>
+        <div class="desktopApps" ondblclick="javascript:newWindow(4)">
+            <div class="desktopAppIcons"></div>
+            <p class="desktopAppNames">CST</p>
+        </div>
+        <div class="desktopApps" ondblclick="javascript:newWindow(5)">
+            <div class="desktopAppIcons"></div>
+            <p class="desktopAppNames">Name</p>
+        </div>
+        <div class="desktopApps">
+            <div class="desktopAppIcons"></div>
+            <p class="desktopAppNames">Name</p>
+        </div>
+        <div class="desktopApps">
+            <div class="desktopAppIcons"></div>
+            <p class="desktopAppNames">Name</p>
+        </div>
+        <div class="desktopApps">
+            <div class="desktopAppIcons"></div>
+            <p class="desktopAppNames">Name</p>
+        </div>
+    </div>
+    <div id="dock">
+        <span id="dockStart">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <style>
+                    *{
+                        user-select: none;
+                        -moz-user-select: none;
+                        -webkit-user-select: none;
+                    }
+                    .w{
+                        font: normal 26px "Comic Sans MS";
+                        fill: #AAA;
+                    }.f{
+                        font: normal 26px "Comic Sans MS";
+                        fill: #AAA;
+                    }.s{
+                        font: normal 32px Helvetica;
+                        fill: #111;
+                    }
+                </style>
+                <circle cx="16" cy="16" r="12" stroke-width="2px" stroke="#111" fill="#F6F6F6" />
+                <text x="5.5" y="27.5" class="s">S</text>
+                <text x="6.5" y="25" class="w">w</text>
+                <text x="10" y="25" class="f">f</text>
+            </svg>
+        </span>
+        <span id="dockApps">
+        </span>
+    </div>
+    <script src="wfOS.js"></script>
+</body>
+</html>

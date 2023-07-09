@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+    <link rel="stylesheet" href="css.css">
+    <style>
+        #page{
+            height: 84px;
+        }
+        html {
+            animation-name: shock;
+            animation-duration: 0.5s;
+            animation-delay: 0.5s;
+        }
+        @keyframes shock {
+            0% {
+                background-color: #fff;
+            }
+            40% {
+                background-color: #f00;
+            }
+            60% {
+                background-color: #f00;
+            }
+            100% {
+                background-color: #fff;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <button id="back" title="返回" onclick="javascript:history.go(-1)">◀</button>
+        <div id="title"><h2>页面不存在</h2></div>
+    </div>
+    <div class="page">
+        <h1>404 Not found</h1><br>
+        <p id="para"></p>
+    </div>
+    <script>
+        window.onload=()=>{
+            var num=Math.random() * 100;
+            function changetxt(arg){
+                document.getElementById("para").innerText=arg;
+                return;
+            }
+            if(num<25) changetxt("唔……你踏入了未知~");
+            else if(num<50) changetxt("这里是一片虚无！");
+            else if(num<75) changetxt("这里什么也没有欸……");
+            else changetxt("前面的区域，以后再来探索吧！"); //但我并不玩原神！！
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+html {
+    position: fixed;
+    top: 0; bottom: 0;
+    left: 0;right: 0;
+    background: url("pictures/OSwallpaper.jpg");
+    background-position: center;
+    background-size: cover;
+}
+#desktop {
+    position: fixed;
+    top: 0; bottom: 44px;
+    left: 0;right: 0;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.desktopApps {
+    width: 64px;
+    height: 72px;
+    margin: 8px;
+    border-radius: 4px;
+    text-align: center;
+}.desktopApps:hover {
+    background: #DDD6;
+    backdrop-filter: blur(8px);
+}.desktopAppIcons{
+    margin: 8px 16px 4px 16px;
+    width: 32px;
+    height: 32px;
+}.desktopAppNames{
+    font: bold 16px Helvetica;
+    width: 64px;
+    height: 26px;
+    color: #DDD;
+    -webkit-text-stroke: 1px #111;
+    overflow: hidden;
+}.desktopApps:hover > .desktopAppNames{
+    overflow: visible;
+}.desktopApps:hover{
+    overflow: visible;
+}
+
+#dock {
+    z-index: 100;
+    position: fixed;
+    bottom: 8px;
+    background-color: #EEE;
+    opacity: .9;
+    backdrop-filter: blur(8px);
+    width: calc(100% - 32px);
+    height: 36px;
+    margin-left: 16px;
+    border-radius: 8px;
+    transition-duration: .5s;
+}
+@media (max-device-width: 440px) {
+    #desktop{
+        bottom: 36px;
+    }
+    #dock{
+        width: 100%;
+        margin: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+#dockStart {
+    display: inline-block;
+    margin: 2px 0 0 4px;
+    height: 32px;
+    width: 32px;
+    border-radius: 8px;
+    transition-duration: .2s;
+}#dockStart:hover{
+    background-color: #DDD;
+}
+#dockApps {
+    display: inline-block;
+    margin: 2px 0 0 4px;
+    height: 32px;
+    width: calc(100% - 52px);
+}
+.dockAppIcons{
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    border-radius: 8px;
+    transition-duration: .2s;
+}.dockAppIcons:hover{
+    background-color: #DDD;
+}.dockAppIcons > *{
+    position: absolute;
+}
+
+
+
+.windows {
+    z-index: 50;
+    position: absolute;
+    left: 200px;    right: 200px;
+    width: 480px;   height: 400px;
+    min-width: 100px;
+    min-height: 32px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #FFF9;
+    backdrop-filter: blur(8px);
+    resize: both;
+}
+.windowCLOSE{
+    z-index: 50;
+    float: right;
+    width: 32px;    height: 24px;
+}
+.windowCLOSE:hover{
+    background-color: #E81123;
+}
+.windowMAXSIZE{
+    z-index: 50;
+    float: right;
+    width: 32px;    height: 24px;
+}
+.windowMAXSIZE:hover{
+    background-color: #0001;
+}
+.windowMINIMIZE{
+    z-index: 50;
+    float: right;
+    width: 32px;    height: 24px;
+}
+.windowMINIMIZE:hover{
+    background-color: #0001;
+}
+.windowTOPS {
+    z-index: 50;
+    overflow: hidden;
+    position: absolute;
+    width: calc(100% - 96px);   height: 24px;
+}
+.windowFILLINS > iframe {
+    z-index: 50;
+    position: absolute;
+    margin-top: 24px;
+    border: 0;
+    width: 100%;   height: calc(100% - 24px);
+    background-color: #FFF;
+}
+.windowTITLES {
+    float: left;
+    position: absolute;
+    bottom: 1px;
+    width: calc(100%-114px);
+    margin-left: 8px;
+    font-size: normal;
+}

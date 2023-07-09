@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WsF的博客</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="blogs.css">
+</head>
+<body>
+    <div id="top">
+        <span id="title">
+            <p>WsF的博客</p>
+        </span>
+        <span id="link">
+            <a href="./index.html" class="links">Home</a>
+            <a href="./blogs.html" class="links activePage">Blogs</a>
+            <a href="./items.html" class="links">Items</a>
+            <a href="./about.html" class="links">About</a>
+        </span>
+    </div>
+    <div id="topPlacer"></div>
+    
+<!---------- BLOGS START ---------->
+    <div class="blocks">
+        <h2>2023/6/30</h2>
+        <p>终于，中考结束了（16、17日的事）之后又可以开始捣鼓网站了！</p><br>
+        <p>首先先重写（在部分原有基础上）一遍好了(</p>
+    </div>
+    <div class="blocks">
+        <h2>2022/11/5</h2>
+        <p>上周又要在家上网课，于是……线上期中(区统)考（<br>
+        这两天重写完了主页，换成了分页滑动贴合的。<br>
+        这个样式需要父容器有height属性与
+        <a title="MDN Reference" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/scroll-snap-type">
+            scroll-snap-type
+        </a>属性，并且overflow属性不能是hidden。</p>
+    </div>
+    <div class="blocks">
+        <h2>2022/8/20</h2>
+        <p>网页的换肤效果终于写完了（<br>
+        用的是&lt;link rel="stylesheet alternate" href="***.css" title="***"&gt;解决。其中：<br>
+        &nbsp;rel只有stylesheet且无title的，必然加载并渲染；<br>
+        &nbsp;rel只有stylesheet且title不为空的，默认加载并渲染；<br>
+        &nbsp;rel有alternate、stylesheet且title不为空的，默认加载但不渲染；<br>
+        可以用下面的JS代码使不渲染的渲染：
+            <pre><window> 🔴 🟠 🟢 </window>
+document.querySelector('link[href="***.css"]').disabled=false;
+</pre></pre><br>
+        踩了个大坑：用js使不渲染的渲染，实际上<b>disabled属性需要先设为true，再设为false才能使其渲染！</b><br>
+        <br>
+        还有一个新知识点：原生js实现块内页面横向滚动：</p>
+        <pre><window> 🔴 🟠 🟢 </window>
+let codes = document.getElementsByTagName("pre");
+for (let i = 0; i &lt; codes.length; i++) {
+const element = codes[i];
+element.addEventListener("wheel", (event) => {
+    event.preventDefault();
+    element.scrollLeft += event.deltaY;
+});
+}
+</pre><p>从这个视频学到的：</p><a href="https://www.bilibili.com/video/BV1A54y1G7iR">🔗视频链接</a>
+    </div>
+    <div class="blocks">
+        <h2>2022/8/17</h2>
+        <p>登录框加了个拖动效果，挺好用的~</p><br>
+        <a href="https://www.jb51.net/article/202249.htm">🔗原文链接</a>
+        <pre><window> 🔴 🟠 🟢 </window>
+let loginwintitle = document.getElementById("wintitle") //改为自己的元素即可
+loginwintitle.onmousedown = function (ev) {
+let e = ev || event;
+let x = e.clientX - loginwind.offsetLeft; //鼠标点击坐标距离盒子左边缘的距离
+let y = e.clientY - loginwind.offsetTop; //鼠标点击坐标距离盒子上边缘的距离
+document.onmousemove = function (ev) {
+    loginwind.style.left = ev.clientX - x + 'px';
+    loginwind.style.top = ev.clientY - y + 'px';
+    document.onmouseup = ()=>{
+        document.onmousemove = null;
+        document.onmouseup = null;
+    }
+}
+} //删了一点原文的东西，但我这里删了运行更好
+</pre>
+    </div>
+    <div class="blocks">
+        <h2>2022/7/28</h2>
+        <p>基本重写完了主站和博客的代码~接下来是一些小应用的风格统一了~</p>
+    </div>
+    <div class="blocks">
+        <h2>2022/7/27</h2>
+        <p>干脆拿GitHub Page做网站的试运行好了~（以后再租服务器）</p><br>
+        <p>旧的内网穿透的网站，就关着不开了吧~</p>
+    </div>
+    <div class="blocks">
+        <h2>2022/6/26</h2>
+        <p>看起来我的网站用了https导致不能直接用BeEF进行XSS攻击啊。。</p><br>
+        <p>看来https还挺安全的（</p><br>
+        <p>（msdt-follina的PoC为什么我不会用呢。。）</p>
+    </div>
+    <div class="blocks">
+        <h2>2022/6/25</h2>
+        <p>新电脑到了！配置够高，装上了VMWare :)</p><br>
+        <p>于是装了Kali、Ubuntu虚拟机~</p>
+    </div>
+    <div class="blocks">
+        <h2>2022/6/24</h2>
+        <p>第二次在B站投稿了！</p><br>
+        <a href="https://www.bilibili.com/video/BV1UT411g7FV/">🔗【RR2】自制机器：我对三刀流一无所知</a> 
+    </div>
+    <div class="blocks">
+        <h2>2022/6/22</h2>
+        <p>期末考逝的最后一天~~</p><br>
+        <p>[11:36] 英语难度感觉挺低（出意外的话，应该不会出意外了）</p><br>
+        <p>[14:42] 物理？（反正估不出分）（会意外地不意外吗）</p><br>
+        <p>[16:46] 历史结束了！已经结束了！！！</p>
+    </div>
+    <div class="blocks">
+        <h2>2022/6/21</h2>
+        <p>期末考逝的第一天~</p><br>
+        <p>[11:50] 语文难度似乎挺正常的（不会估分的屑）（没考岳阳楼记？我不理解）</p><br>
+        <p>[15:09] 数学结束了！看起来不难，不出意外应该挺好（不出意外，会出意外）</p>
+    </div>
+    <div class="blocks">
+        <h2>2022/6/20</h2>
+        <p>背书之余，给博客、主站加了一点效果：模糊边缘、macOS窗口式代码栏：</p>
+        <pre><window> 🔴 🟠 🟢 </window>
+模糊边框：
+CSS：
+box-shadow: 0px, 0px, 3px, 3px, #6cf;
+/* x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 */
+
+标题栏：
+HTML：
+&lt;pre&gt;&lt;window&gt; 🔴 🟠 🟢 &lt;/window&gt;
+此处写代码内容&lt;/pre&gt;
+CSS：（最后编辑于2022/6/22）
+pre {
+    user-select: text;
+    margin-left: 10px;
+    width: 800px;
+    border-radius: 5px;
+    background-color: #111111;
+    color: #ededed;
+    font-size: large;
+    font-family: consolas;
+}
+window {
+    background-color: #666666;
+    font-size: x-small;
+    position: absolute;
+    height: 20px;
+    width: 800px;
+    border-radius: 5px 5px 0px 0px;
+    line-height: 20px;
+    overflow: hidden;
+}</pre>
+        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow">🔗box-shadow的MDN Reference</a>
+        <br><p>另外，<b>display: fixed;</b> 会使得元素固定在页面的某个位置，如 #header；<br>
+        <b>z-index: </b>加数字表示元素显示优先级。</p>
+    </div>
+    <div class="blocks">
+        <jmplnk id="2022-06-19"></jmplnk>
+        <h2>2022/6/19</h2>
+        <p>背书之余（不背书就玩喽），对博客、主站进行了完善。</p>
+    </div>
+    <div class="blocks">
+        <h2>2022/6/18</h2>
+        <p>对Undertale fight.html（2023/6/30：RIP）进行修改：在 攻击 循环处可以尝试使用一下代码来实现连续定时移动。
+            <pre><window> 🔴 🟠 🟢 </window>
+function atk(depth){
+setTimeout(() => {
+    bone1.style.marginLeft=bone1.offsetLeft+"px";
+    if(depth &lt; 50) atk(depth+1);
+}, 800);
+}</pre></p>
+    </div>
+<!----------- BLOGS END -----------><br><br>
+    
+</body>
+</html>

@@ -19,22 +19,36 @@ let dockApps = document.getElementById("dockApps")
 // 新建窗口
 var windowIDs=0
 const windowHTML1='class="windowCLOSE"><svg viewBox="0 0 32 24"><line x1="10" x2="22" y1="6" y2="18" stroke-width="1" stroke="#111" stroke-linecap="round" /><line x1="22" x2="10" y1="6" y2="18" stroke-width="1" stroke="#111" stroke-linecap="round" /></svg></span><span onclick="javascript:windowmaxsize(\'window'
-const windowHTML1_2='\')" class="windowMAXSIZE"><svg viewBox="0 0 32 24"><rect x="8" y="6" width="16" height="12" stroke-width="1" stroke="#111" fill="transparent" rx="2"> </svg></span><span onclick=\'javascript:minimaxsize("window'
-const windowHTML2='class="windowMINIMIZE"><svg viewBox="0 0 32 24"><line x1="8" x2="24" y1="12" y2="12" stroke-width="1" stroke="#111" stroke-linecap="round" /></svg></span><span class="windowTOPS"><p class="windowTITLES">Window_'
+const windowHTML1_2='\')" class="windowMAXSIZE"><svg viewBox="0 0 32 24"><rect x="8" y="6" width="16" height="12" stroke-width="1" stroke="#111" fill="transparent" rx="4"> </svg></span><span onclick=\'javascript:minimaxsize("window'
+const windowHTML2='class="windowMINIMIZE"><svg viewBox="0 0 32 24"><line x1="8" x2="24" y1="12" y2="12" stroke-width="1" stroke="#111" stroke-linecap="round" /></svg></span><span class="windowTOPS"><svg>'
+const windowHTML2_1='<p class="windowTITLES">'
 const windowHTML2_2='</p></span><span class="windowFILLINS">'
 const windowHTML3='</span>'
 const windowFillinHTML=[
     '',
     '<iframe src="aboutwfOS.html">',
-    '<iframe src="index.html">',
+    '',
     '<iframe src="music-unlocker/index.html">',
-    '<iframe src="CST.html">',
+    'INTERNET EXPLORER', // the explorer
     '<iframe src="play.html">',
     '<iframe src="Downloads.html">',
     '<iframe src="超课表3.1.html">',
     '<iframe src="startpage.html">',
     '<iframe src="webOS.html">',
 ]
+const windowTitles=[
+    '',
+    '关于',
+    '未知',
+    '音乐解锁',
+    'wfOS浏览器', // the explorer
+    '未知',
+    '未知',
+    '未知',
+    '未知',
+    '未知',
+]
+// 新窗口
 function newWindow(wintype) {
     var newWindowReferHTML = document.createElement("span")
     newWindowReferHTML.innerHTML='<div class="dockAppIcons" onclick="minimaxsize(\''+"window"+windowIDs+'\')"><p>'+windowIDs+'</p></div>'
@@ -42,11 +56,30 @@ function newWindow(wintype) {
     dockApps.appendChild(newWindowReferHTML)
     var newWindowHTML = document.createElement("span")
     newWindowHTML.id="window"+windowIDs
-    newWindowHTML.innerHTML="<span onclick='javascript:document.getElementById(\"window"+windowIDs+"\").remove();document.getElementById(\"windowRefer"+windowIDs+"\").remove()'"+windowHTML1+windowIDs+windowHTML1_2+windowIDs+"\")'"+windowHTML2+windowIDs+windowHTML2_2+windowFillinHTML[wintype]+windowHTML3
+    if(windowFillinHTML[wintype]=='INTERNET EXPLORER'){
+        explorerFillinHTML="<span></span>"
+        newWindowHTML.innerHTML="<span onclick='javascript:windowClose(\"window"+windowIDs+"\")' "+windowHTML1+windowIDs+windowHTML1_2+windowIDs+"\")'"+windowHTML2+windowTitles[wintype]+windowHTML2_2+explorerFillinHTML+windowHTML3
+    }else{
+        newWindowHTML.innerHTML="<span onclick='javascript:windowClose(\"window"+windowIDs+"\")' "+windowHTML1+windowIDs+windowHTML1_2+windowIDs+"\")'"+windowHTML2+windowHTML2_1+windowTitles[wintype]+windowHTML2_2+windowFillinHTML[wintype]+windowHTML3
+    }
     windowIDs++
     newWindowHTML.className="windows"
     document.body.appendChild(newWindowHTML)
     reloadListeners();
+}
+// 关闭
+function windowClose(arg){
+    element=document.getElementById(arg)
+    element.style.transform="scaleY(.02)"
+    element.style.transitionDuration=".2s"
+    setTimeout(() => {
+        element.style.transform="scale(.02)"
+        element.style.transitionDuration=".2s"
+        setTimeout(() => {
+            element.remove()
+        }, 200);
+    }, 200);
+    document.getElementById("windowRefer"+arg.substr(6,10)).remove()
 }
 // 最小化
 function minimaxsize(arg){

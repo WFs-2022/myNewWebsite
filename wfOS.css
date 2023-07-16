@@ -1,6 +1,7 @@
 * {
     margin: 0;
     font-family: Helvetica, Arial, sans-serif;
+    transition-timing-function: "ease-in"
 }
 html {
     position: fixed;
@@ -34,11 +35,11 @@ html {
     width: 32px;
     height: 32px;
 }.desktopAppNames{
-    font: bold 16px Helvetica;
+    font: normal 16px Helvetica;
     width: 64px;
     height: 26px;
     color: #DDD;
-    -webkit-text-stroke: 1px #111;
+    text-shadow: 1px 1px 2px #222;
     overflow: hidden;
 }.desktopApps:hover > .desktopAppNames{
     overflow: visible;
@@ -109,14 +110,15 @@ html {
     min-height: 32px;
     border-radius: 8px;
     overflow: hidden;
-    background-color: #FFF9;
+    background-color: #FFFB;
     backdrop-filter: blur(8px);
     resize: both;
 }
 .windowCLOSE{
     z-index: 50;
     float: right;
-    width: 32px;    height: 24px;
+    padding: 5px 0 4px 0;
+    width: 36px;    height: 27px;
 }
 .windowCLOSE:hover{
     background-color: #E81123;
@@ -124,7 +126,8 @@ html {
 .windowMAXSIZE{
     z-index: 50;
     float: right;
-    width: 32px;    height: 24px;
+    padding: 5px 0 4px 0;
+    width: 36px;    height: 27px;
 }
 .windowMAXSIZE:hover{
     background-color: #0001;
@@ -132,7 +135,8 @@ html {
 .windowMINIMIZE{
     z-index: 50;
     float: right;
-    width: 32px;    height: 24px;
+    padding: 5px 0 4px 0;
+    width: 36px;    height: 27px;
 }
 .windowMINIMIZE:hover{
     background-color: #0001;
@@ -141,21 +145,21 @@ html {
     z-index: 50;
     overflow: hidden;
     position: absolute;
-    width: calc(100% - 96px);   height: 24px;
-}
-.windowFILLINS > iframe {
-    z-index: 50;
-    position: absolute;
-    margin-top: 24px;
-    border: 0;
-    width: 100%;   height: calc(100% - 24px);
-    background-color: #FFF;
+    width: calc(100% - 108px);   height: 36px;
 }
 .windowTITLES {
     float: left;
     position: absolute;
     bottom: 1px;
-    width: calc(100%-114px);
-    margin-left: 8px;
-    font-size: normal;
+    height: 24px;
+    margin: 5px 0 5px 8px;
+    font-size: 18px;
+}
+.windowFILLINS > * {
+    z-index: 50;
+    position: absolute;
+    border: 0;
+    margin-top: 36px;
+    width: 100%;   height: calc(100% - 36px);
+    background-color: #FFF;
 }

@@ -15,6 +15,8 @@ window.onload=()=>{
 }
 
 // 定义
+let dock=document.getElementById("dock")
+let dockActivator=document.getElementById("dockActivator")
 let dockApps = document.getElementById("dockApps")
 // 新建窗口
 var windowIDs=0
@@ -58,7 +60,7 @@ function newWindow(wintype) {
     newWindowHTML.id="window"+windowIDs
     if(windowFillinHTML[wintype]=='INTERNET EXPLORER'){
         explorerFillinHTML="<span></span>"
-        newWindowHTML.innerHTML="<span onclick='javascript:windowClose(\"window"+windowIDs+"\")' "+windowHTML1+windowIDs+windowHTML1_2+windowIDs+"\")'"+windowHTML2+windowTitles[wintype]+windowHTML2_2+explorerFillinHTML+windowHTML3
+        newWindowHTML.innerHTML="<span onclick='javascript:windowClose(\"window"+windowIDs+"\")' "+windowHTML1+windowIDs+windowHTML1_2+windowIDs+"\")'"+windowHTML2+windowHTML2_2+explorerFillinHTML+windowHTML3
     }else{
         newWindowHTML.innerHTML="<span onclick='javascript:windowClose(\"window"+windowIDs+"\")' "+windowHTML1+windowIDs+windowHTML1_2+windowIDs+"\")'"+windowHTML2+windowHTML2_1+windowTitles[wintype]+windowHTML2_2+windowFillinHTML[wintype]+windowHTML3
     }
@@ -80,6 +82,9 @@ function windowClose(arg){
         }, 200);
     }, 200);
     document.getElementById("windowRefer"+arg.substr(6,10)).remove()
+    if(element.maxsized==true){
+        dockShow()
+    }
 }
 // 最小化
 function minimaxsize(arg){
@@ -88,7 +93,7 @@ function minimaxsize(arg){
         element.style.transitionDuration='0.5s'
         element.style.transform='translateY(0) scale(1)'
         if(element.maxsized){
-            document.getElementById("dock").style.transform="translateY(44px)"
+            dockHide()
         }
         setTimeout(() => {
             element.style.transitionDuration='0s'
@@ -97,7 +102,7 @@ function minimaxsize(arg){
     else{
         element.style.transitionDuration='0.5s'
         element.style.transform='translateY(100vh) scale(0)'
-        document.getElementById("dock").style.transform="translateY(0)"
+        dockShow()
         setTimeout(() => {
             element.style.transitionDuration='0s'
         }, 500);
@@ -107,24 +112,36 @@ function minimaxsize(arg){
 var maxsizedWindowData=''
 function windowmaxsize(arg){
     element=document.getElementById(arg)
-    if(element.maxsized!=true){
+    if(element.maxsized!=true){ // normal size
         element.style.transitionDuration='0.3s'
-        maxsizedWindowData=element.style
+        maxsizedWindowData1=element.style.left
+        maxsizedWindowData2=element.style.top
+        maxsizedWindowData3=element.style.width
+        maxsizedWindowData4=element.style.height
         element.style.left='0'
         element.style.top='0'
         element.style.width='100%'
         element.style.height='100%'
         element.style.borderRadius='0'
         element.maxsized=true
-        document.getElementById("dock").style.transform="translateY(44px)"
+        dockHide()
+        dockActivator.style.display="block"
         setTimeout(() => {
             element.style.transitionDuration='0s'
         }, 300);
     }
-    else{
-        element.setAttribute('style', maxsizedWindowData);
+    else{ //maximized
+        element.style.transitionDuration='0.3s'
+        element.style.left=maxsizedWindowData1
+        element.style.top=maxsizedWindowData2
+        element.style.width=maxsizedWindowData3
+        element.style.height=maxsizedWindowData4
+        element.style.borderRadius='8px'
         element.maxsized=false
-        document.getElementById("dock").style.transform="translateY(0)"
+        setTimeout(() => {
+            element.style.transitionDuration='0s'
+        }, 300);
+        dockShow()
     }
 }
 
@@ -136,6 +153,9 @@ function reloadListeners(){
         var windows = element.parentElement;
         const items = windows.children;
         element.onmousedown = function (ev) {
+            if(windows.maxsized){
+                return
+            }
             windows.style.transitionDuration='0'
             let e = ev || event;
             let x = e.clientX - element.parentElement.offsetLeft; //鼠标点击坐标距离盒子左边缘的距离
@@ -149,8 +169,26 @@ function reloadListeners(){
                 }
             }
         }
-        // closer.onclick=()=>{
-        //     closer.parentElement.remove();
-        // }
     }
+}
+
+// dock栏感应
+dockActivator.onmousedown=()=>{
+    dockShow()
+    dock.acivateByMaxsize=false
+}
+dock.onmouseleave=()=>{
+    if(dock.acivateByMaxsize==false) {
+        dockHide()
+    }
+}
+function dockShow(){
+    dock.style.transform="translateY(0px)"
+    dockActivator.style.transform="translateY(16px)"
+    dock.acivateByMaxsize=true
+}
+function dockHide(){
+    dock.style.transform="translateY(44px)"
+    dockActivator.style.transform="translateY(0px)"
+    dockActivator.style.display="true"
 }

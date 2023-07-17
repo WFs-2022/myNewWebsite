@@ -71,6 +71,16 @@ html {
         border-radius: 0;
     }
 }
+#dockActivator {
+    display: none;
+    z-index: 150;
+    position: absolute;
+    width: 94%; height: 4px;
+    left: 3%;   bottom: 8px;
+    border-radius: 2px;
+    background-color: #888B;
+    transition-duration: .3s;
+}
 #dockStart {
     display: inline-block;
     margin: 2px 0 0 4px;
@@ -147,6 +157,16 @@ html {
     position: absolute;
     width: calc(100% - 108px);   height: 36px;
 }
+.explorerTabs {
+    display: block;
+    margin: 6px;
+    height: 24px;
+    width: 96px;
+    border-radius: 6px;
+    background-color: #FFFA;
+    box-shadow: 2px 2px 4px 1px #EEE4;
+}
+
 .windowTITLES {
     float: left;
     position: absolute;

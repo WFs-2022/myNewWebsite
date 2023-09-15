@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>wfOS</title>
     <link rel="stylesheet" href="wfOS.css">
+    <!-- <link rel="stylesheet" href="wfOSDark.css"> -->
 </head>
 <body>
     <div id="desktop">
@@ -13,9 +14,9 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                 <style>
                     *{
-                        user-select: none;
                         -moz-user-select: none;
                         -webkit-user-select: none;
+                        user-select: none;
                     }
                     .w{
                         font: normal 26px "Comic Sans MS";
@@ -72,9 +73,9 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                 <style>
                     *{
-                        user-select: none;
                         -moz-user-select: none;
                         -webkit-user-select: none;
+                        user-select: none;
                     }
                     .w{
                         font: normal 26px "Comic Sans MS";
@@ -97,29 +98,40 @@
         </span>
     </div>
     <script src="wfOS.js"></script>
-
-    <span id="window100" class="windows" onclick="javascript:reloadListeners()">
-        <span onclick="javascript:windowClose('window100')"
-            class="windowCLOSE">
-            <svg viewBox="0 0 32 24">
-                <line x1="10" x2="22" y1="6" y2="18" stroke-width="1" stroke="#111" stroke-linecap="round"></line>
-                <line x1="22" x2="10" y1="6" y2="18" stroke-width="1" stroke="#111" stroke-linecap="round"></line>
-            </svg>
-        </span>
-        <span onclick="javascript:windowmaxsize('window100')" class="windowMAXSIZE">
-            <svg viewBox="0 0 32 24">
-                <rect x="8" y="6" width="16" height="12" stroke-width="1" stroke="#111" fill="transparent" rx="2"> </rect>
-            </svg></span>
-        <span onclick="javascript:minimaxsize('window100')" class="windowMINIMIZE">
-                <svg viewBox="0 0 32 24">
-                <line x1="8" x2="24" y1="12" y2="12" stroke-width="1" stroke="#111" stroke-linecap="round"></line>
-            </svg></span>
-        <span class="windowTOPS">
-            <span class="explorerTabs"></span>
-        </span>
-        <span class="windowFILLINS">
-            <span>浏览器编写调试用窗口</span>
-        </span>
-    </span>
 </body>
 </html>
+
+<span id="window*" class="windows">
+    <span onclick="javascript:windowClose('window*')"
+        class="windowCLOSE">
+        <svg viewBox="0 0 32 24">
+            <line x1="10" x2="22" y1="6" y2="18" stroke-width="1" stroke="#111" stroke-linecap="round"></line>
+            <line x1="22" x2="10" y1="6" y2="18" stroke-width="1" stroke="#111" stroke-linecap="round"></line>
+        </svg>
+    </span>
+    <span onclick="javascript:windowmaxsize('window*')" class="windowMAXSIZE">
+        <svg viewBox="0 0 32 24">
+            <rect x="8" y="6" width="16" height="12" stroke-width="1" stroke="#111" fill="transparent" rx="2"> </rect>
+        </svg></span>
+    <span onclick="javascript:minimaxsize('window*')" class="windowMINIMIZE">
+            <svg viewBox="0 0 32 24">
+            <line x1="8" x2="24" y1="12" y2="12" stroke-width="1" stroke="#111" stroke-linecap="round"></line>
+        </svg></span>
+    <span class="windowTOPS" ondblclick="javascript: windowmaxsize('window*')">
+        <span>
+            <span class="explorerTabs" id="tab1">
+                <p>新标签页</p>
+                <span class="explorerTabsCloser"><p>+</p></span></span></span>
+        <span class="explorerAddTabers"><p>+</p></span>
+    </span>
+    <span class="windowFILLINS">
+        <span class="explorerSearchBox">
+            <span class="explorerTabReloader"><img src="pictures/reload-outline.svg" alt=""></span>
+            <span class="explorerSearchBar">
+                <input type="text" name="输入框" value="https://space.bilibili.com/518624115" placeholder="请输入地址或搜索内容" class="explorerSearchBarInput">
+            </span>
+        </span>
+        <span class="explorerTabWindows"><iframe src="https://space.bilibili.com/518624115" frameborder="0"></iframe></span>
+    </span>
+    <span class="fakeFILLINs"></span>
+</span>

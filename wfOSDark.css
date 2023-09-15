@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    transition-timing-function: "ease-in";
+}
+html {
+    position: fixed;
+    top: 0; bottom: 0;
+    left: 0;right: 0;
+    background: url("pictures/OSwallpaperDark.jpg");
+    background-position: center;
+    background-size: cover;
+}
+#desktop {
+    position: fixed;
+    top: 0; bottom: 44px;
+    left: 0;right: 0;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.desktopApps {
+    width: 64px;
+    height: 72px;
+    margin: 8px;
+    border-radius: 4px;
+    text-align: center;
+}.desktopApps:hover {
+    background: #DDD6;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}.desktopAppIcons{
+    margin: 8px 16px 4px 16px;
+    width: 32px;
+    height: 32px;
+}.desktopAppNames{
+    font: normal 16px Helvetica;
+    width: 64px;
+    height: 26px;
+    color: #DDD;
+    text-shadow: 1px 1px 2px #222;
+    overflow: hidden;
+}.desktopApps:hover > .desktopAppNames{
+    overflow: visible;
+}.desktopApps:hover{
+    overflow: visible;
+}
+
+#dock {
+    z-index: 100;
+    position: fixed;
+    bottom: 8px;
+    background-color: #555;
+    opacity: .7;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    width: calc(100% - 32px);
+    height: 36px;
+    margin-left: 16px;
+    border-radius: 8px;
+    transition-duration: .5s;
+}
+@media (max-device-width: 440px) {
+    #desktop{
+        bottom: 36px;
+    }
+    #dock{
+        width: 100%;
+        margin: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+#dockActivator {
+    display: none;
+    z-index: 150;
+    position: absolute;
+    width: 94%; height: 4px;
+    left: 3%;   bottom: 8px;
+    border-radius: 2px;
+    background-color: #888B;
+    transition-duration: .3s;
+}
+#dockStart {
+    display: inline-block;
+    margin: 2px 0 0 4px;
+    height: 32px;
+    width: 32px;
+    border-radius: 8px;
+    transition-duration: .2s;
+}#dockStart:hover{
+    background-color: #666;
+}
+#dockApps {
+    display: inline-block;
+    margin: 2px 0 0 4px;
+    height: 32px;
+    width: calc(100% - 52px);
+}
+.dockAppIcons{
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    border-radius: 8px;
+    transition-duration: .2s;
+}.dockAppIcons:hover{
+    background-color: #666;
+}.dockAppIcons > *{
+    position: absolute;
+}
+
+.windows {
+    z-index: 50;
+    position: absolute;
+    left: 200px;    right: 200px;
+    width: 480px;   height: 400px;
+    min-width: 100px;
+    min-height: 32px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #6668;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    resize: both;
+}
+.windowCLOSE{
+    z-index: 50;
+    float: right;
+    padding: 5px 0 4px 0;
+    width: 36px;    height: 27px;
+}
+.windowCLOSE:hover{
+    background-color: #E81123;
+}
+.windowMAXSIZE{
+    z-index: 50;
+    float: right;
+    padding: 5px 0 4px 0;
+    width: 36px;    height: 27px;
+}
+.windowMAXSIZE:hover{
+    background-color: #0002;
+}
+.windowMINIMIZE{
+    z-index: 50;
+    float: right;
+    padding: 5px 0 4px 0;
+    width: 36px;    height: 27px;
+}
+.windowMINIMIZE:hover{
+    background-color: #0002;
+}
+.windowTOPS {
+    z-index: 50;
+    overflow: hidden;
+    position: absolute;
+    width: calc(100% - 108px);   height: 36px;
+    overflow: hidden;
+}
+
+.explorerTabs {
+    display: inline-block;
+    margin: 6px 0 0 4px;
+    height: 26px;
+    width: 96px;
+    border-radius: 6px;
+    background-color: #6666;
+    box-shadow: 2px 2px 4px 1px #3334;
+}.explorerTabsCloser {
+    display: block;
+    float: right;
+    width: 12px; height: 12px;
+    background-color: transparent;
+    margin: -10px 4px 0 0;
+    border-radius: 4px;
+}.explorerTabsCloser:hover {
+    background-color: #0013;
+}.explorerTabsCloser > p {
+    font-size: 16px;
+    position: relative;
+    left: .5px; top: -2px;
+    transition-duration: 0;
+    transform: rotate(45deg);
+}.explorerTabs > p {
+    position: relative;
+    width: 72px; height: 18px;
+    font-size: 16px;
+    top: 4px;   left: 4px;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+}.explorerAddTabers {
+    position: absolute;
+    display: inline-block;
+    margin: 6px 0 0 4px;
+    width: 26px;    height: 26px;
+    border-radius: 6px;
+    background-color: #6666;
+    box-shadow: 2px 2px 4px 1px #3334;
+    font-size: 24px;
+}.explorerAddTabers > p {
+    margin: 0 0 0 6px;
+}
+
+.windowTITLES {
+    float: left;
+    position: absolute;
+    bottom: 1px;
+    height: 24px;
+    margin: 5px 0 5px 8px;
+    font-size: 18px;
+}
+.windowFILLINS > * {
+    z-index: 50;
+    position: absolute;
+    border: 0;
+    margin-top: 36px;
+    width: 100%;   height: calc(100% - 36px);
+    background-color: #112;
+}

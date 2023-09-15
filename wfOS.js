@@ -1,8 +1,8 @@
 // 手机端弹窗
+var mobileFlag = false;
 window.onload=()=>{
     var userAgentInfo = navigator.userAgent;
     var mobileAgents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPod"];
-    var mobileFlag = false;
     for (var v = 0; v < mobileAgents.length; v++) {
        if (userAgentInfo.indexOf(mobileAgents[v]) > 0) {
              mobileFlag = true;
@@ -12,6 +12,7 @@ window.onload=()=>{
     if(mobileFlag){
         alert("本站暂未适配手机端，部分显示可能较奇怪，建议使用大屏设备打开，如电脑、平板电脑等。")
     }
+        reloadListeners()
 }
 
 // 定义
@@ -145,29 +146,79 @@ function windowmaxsize(arg){
     }
 }
 
-// 窗口移动
+// 刷新监听器：窗口移动，浏览器Tab功能
+const newTabHTML1='<p>'// 后加tabTitle
+const newTabHTML2='</p><span class="explorerTabsCloser"><p>+</p></span>'
 function reloadListeners(){
-    let windowTOPS = document.getElementsByClassName("windowTOPS");
+    let windowTOPS = document.getElementsByClassName("windowTOPS")
     for (let i = 0; i < windowTOPS.length; i++) {
         const element = windowTOPS[i];
         var windows = element.parentElement;
-        const items = windows.children;
         element.onmousedown = function (ev) {
             if(windows.maxsized){
-                return
+                windowmaxsize(windows.id)
             }
+            windows.lastElementChild.style.pointerEvents='none'
             windows.style.transitionDuration='0'
-            let e = ev || event;
-            let x = e.clientX - element.parentElement.offsetLeft; //鼠标点击坐标距离盒子左边缘的距离
-            let y = e.clientY - element.parentElement.offsetTop; //鼠标点击坐标距离盒子上边缘的距离
+            let e = ev || event
+            let x = e.clientX - element.parentElement.offsetLeft
+            let y = e.clientY - element.parentElement.offsetTop
+            window.onmouseup = ()=>{
+                window.onmousemove = null
+                window.onmouseup = null
+                windows.lastChild.style.pointerEvents='all'
+            }
+            desktopWidth=document.getElementById("desktop").offsetWidth
+            desktopHeight=document.getElementById("desktop").offsetHeight
             window.onmousemove = function (ev) {
-                element.parentElement.style.left = ev.clientX - x + 'px';
-                element.parentElement.style.top = ev.clientY - y + 'px';
-                window.onmouseup = ()=>{
-                    window.onmousemove = null;
-                    window.onmouseup = null;
+                if (ev.clientX<0||ev.clientY<0||ev.clientX>desktopWidth||ev.clientY>desktopHeight) {
+                    return
+                }
+                element.parentElement.style.left = ev.clientX - x + 'px'
+                element.parentElement.style.top = ev.clientY - y + 'px'
+            }
+        }
+    }
+    let explorerTabsCloser = document.getElementsByClassName("explorerTabsCloser")
+    for (let i = 0; i < explorerTabsCloser.length; i++) {
+        const element = explorerTabsCloser[i];
+        element.onclick=()=>{
+            tabNum = parseInt(element.parentElement.parentElement.parentElement.tabNum-1)
+            if (tabNum==0) {
+                element.parentElement.parentElement.parentElement.windowClose()
+            }
+            element.parentElement.parentElement.parentElement.tabNum = tabNum
+            element.parentElement.remove() // animation later here
+        }
+    }
+    let explorerAddTabers = document.getElementsByClassName("explorerAddTabers")
+    for (let i = 0; i < explorerAddTabers.length; i++) {
+        const element = explorerAddTabers[i];
+        element.onclick=function(){
+            let tabNum = parseInt(element.parentElement.parentElement.tabNum)
+            let newTabHTML = document.createElement("span")
+            newTabHTML.innerHTML=newTabHTML1+'test'+tabNum+newTabHTML2
+            newTabHTML.className='explorerTabs'
+            newTabHTML.id='tab'+tabNum
+            element.parentElement.children[0].appendChild(newTabHTML)
+            element.parentElement.tabNum = tabNum+1
+            reloadListeners()
+        }
+    }
+    let explorerSearchBarInputs = document.getElementsByClassName("explorerSearchBarInput")
+    for (let i = 0; i < explorerSearchBarInputs.length; i++) {
+        const element = explorerSearchBarInputs[i];
+        element.onfocus=()=>{
+            document.onkeydown=function(event){
+                var e = event || window.event || arguments.callee.caller.arguments[0];
+                if(e && e.keyCode==13){
+                    // 需重写
+                    element.parentElement.parentElement.parentElement.children[1].innerHTML='<iframe src="'+element.value+'"></iframe>'
                 }
             }
+        }
+        element.onblur=()=>{
+            document.onkeydown = null
         }
     }
 }

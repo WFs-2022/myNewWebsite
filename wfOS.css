@@ -29,6 +29,7 @@ html {
     text-align: center;
 }.desktopApps:hover {
     background: #DDD6;
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 }.desktopAppIcons{
     margin: 8px 16px 4px 16px;
@@ -53,6 +54,7 @@ html {
     bottom: 8px;
     background-color: #EEE;
     opacity: .9;
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     width: calc(100% - 32px);
     height: 36px;
@@ -121,6 +123,7 @@ html {
     border-radius: 8px;
     overflow: hidden;
     background-color: #FFFB;
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     resize: both;
 }
@@ -156,24 +159,51 @@ html {
     overflow: hidden;
     position: absolute;
     width: calc(100% - 108px);   height: 36px;
+    overflow: hidden;
 }
+
 .explorerTabs {
-    display: block;
-    margin: 6px;
-    height: 24px;
+    display: inline-block;
+    margin: 6px 0 0 4px;
+    height: 26px;
     width: 96px;
     border-radius: 6px;
     background-color: #FFFA;
     box-shadow: 2px 2px 4px 1px #EEE4;
-}
-
-.windowTITLES {
-    float: left;
+}.explorerTabsCloser {
+    display: block;
+    float: right;
+    width: 12px; height: 12px;
+    background-color: transparent;
+    margin: -10px 4px 0 0;
+    border-radius: 4px;
+}.explorerTabsCloser:hover {
+    background-color: #6654;
+}.explorerTabsCloser > p {
+    font-size: 16px;
+    position: relative;
+    left: .5px; top: -2px;
+    transition-duration: 0;
+    transform: rotate(45deg);
+}.explorerTabs > p {
+    position: relative;
+    width: 72px; height: 18px;
+    font-size: 16px;
+    top: 4px;   left: 4px;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+}.explorerAddTabers {
     position: absolute;
-    bottom: 1px;
-    height: 24px;
-    margin: 5px 0 5px 8px;
-    font-size: 18px;
+    display: inline-block;
+    margin: 6px 0 0 4px;
+    width: 26px;    height: 26px;
+    border-radius: 6px;
+    background-color: #FFFA;
+    box-shadow: 2px 2px 4px 1px #EEE4;
+    font-size: 24px;
+}.explorerAddTabers > p {
+    margin: 0 0 0 6px;
 }
 .windowFILLINS > * {
     z-index: 50;
@@ -182,4 +212,51 @@ html {
     margin-top: 36px;
     width: 100%;   height: calc(100% - 36px);
     background-color: #FFF;
+}
+.windowTITLES {
+    float: left;
+    position: absolute;
+    bottom: 1px;
+    height: 24px;
+    margin: 5px 0 5px 8px;
+    font-size: 18px;
+}
+.explorerSearchBox {
+    display: block;
+    z-index: 55;
+    height: 24px;
+    background: transparent;
+}.explorerTabReloader {
+    display: inline-block;
+    margin: 1px 0 0 4px;
+    padding: 2px;
+    border-radius: 4px;
+    width: 14px;    height: 14px;
+}.explorerTabReloader:hover {
+    background: #0001;
+}.explorerSearchBar {
+    position: absolute;
+    top: 1px;
+    left: 30px; right: 30px;
+    border: 0;
+    border-radius: 9px;
+    height: 18px;
+    background: #FFF;
+}.explorerSearchBarInput {
+    position: absolute;
+    top: 0;     bottom: 0;
+    left: 4px;    right: 4px;
+    border: 0;
+    background: transparent;
+    outline: none;
+}
+.explorerTabWindows {
+    display: block;
+    z-index: 54;
+    height: calc(100% - 60px);
+    margin-top: 60px;
+}
+.explorerTabWindows > iframe {
+    height: 100%;
+    width: 100%;
 }

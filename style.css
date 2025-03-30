@@ -113,7 +113,7 @@ body {
     transition-duration: 1s;
 }.blocks a:hover {
     color: #00F;
-}.blocks .badlinks:hover {
+}.blocks .deprecated:hover {
     color: #F00;
 }
 
